@@ -2,15 +2,16 @@ from odoo import models, fields
 
 
 class Customers(models.Model):
-    _name = 'pedido.cliente.practica'
+    _name = 'order.customers'
     _description = 'Cliente'
 
-    name = fields.Char('Apellidos y Nombres', required=True)
-    phone = fields.Char('Telefono')
+    document = fields.Char('Documento de indentidad', required=True, size=8)
+    name = fields.Char('Apellidos y Nombres', required=True, size=100)
+    phone = fields.Char('Telefono', size=9)
 
 
 class Address(models.Model):
-    _name = 'pedido.cliente.direccion'
+    _name = 'order.customers.address'
     _description = 'Direcciones del cliente'
 
     customers_id = fields.Many2one('pedido.cliente', string='Cliente')

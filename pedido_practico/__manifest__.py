@@ -4,5 +4,9 @@
     'category': 'pedido',
     'summary': 'Pedidos de comida por internet',
     'installable': True,
-    'data': [],
+    'data': [
+        'views/models_views.xml'
+        'views/order_product_views.xml'
+        'views/menu_views.xml'
+    ],
 }

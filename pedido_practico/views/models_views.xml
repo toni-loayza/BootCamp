@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_customers_tree" model="ir.ui.view">
+        <field name="name">order.customers.tree</field>
+        <field name="model">order.customers</field>
+        <field name="arch" type="xml">
+            <tree string="Lista de pedido de cliente">
+                <field name="document"/>
+                <field name="name"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_order_customers_form" model="ir.ui.view">
+        <field name="name">order.customers.form</field>
+        <field name="model">order.customers</field>
+        <field name="arch" type="xml">
+            <form string="Cliente">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="document"/>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="phone"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_order_customers" model="ir.actions.act_window">
+        <field name="name">Listado de pedidods de clientes</field>
+        <field name="res_model">order.customers</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_order_customers_tree"/>
+    </record>
+</odoo>

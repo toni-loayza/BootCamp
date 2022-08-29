@@ -1,3 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_pedido_cliente,pedido.cliente,model_pedido_cliente,,1,1,1,1
-access_pedido_cliente_direccion,pedido.cliente.direccion,model_pedido_cliente_direccion,,1,1,1,1
+access_order_customers,order.customers,model_order_customers,,1,1,1,1
+access_order_customers_address,order.customers.address,model_order_customers_address,,1,1,1,1
+access_order_product,order.product,model_order_product,,1,1,1,1
+access_order_order,order.order,model_order_order,,1,1,1,1
+access_order_order_line,order.order.line,model_order_order_line,,1,1,1,1

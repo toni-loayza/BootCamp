@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_order" name="Pedidos" sequence="2">
+        <menuitem id="menu_order_customers" name="Clientes" sequence="1" action="action_order_customers"/>
+        <menuitem id="menu_order_product" name="Productos" sequence="2" action="action_order_product"/>
+    </menuitem>
+</odoo>
