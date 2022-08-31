@@ -16,22 +16,27 @@
         <field name="model">order.order</field>
         <field name="arch" type="xml">
             <form string="Pedido">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
                 <sheet>
                     <group>
                         <group>
-                            <field name="date"/>
-<!--                            <field name="stock"/>-->
+                            <field name="customers_id"/>
+                            <field name="address_id" domain="[('customers_id', '=', customers_id)]"/>
                         </group>
                         <group>
-<!--                            <field name="price"/>-->
+                            <field name="date"/>
                         </group>
                     </group>
                     <notebook>
-                        <page string="Detalle" id="order_line">
+                        <page string="Detalles" id="order_line">
                             <field name="line_ids">
                                 <tree editable="bottom">
                                     <field name="product_id"/>
+                                    <field name="unit_price"/>
                                     <field name="quantity"/>
+                                    <field name="subtotal"/>
                                 </tree>
                             </field>
                         </page>

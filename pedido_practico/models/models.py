@@ -16,5 +16,12 @@ class Address(models.Model):
     _description = 'Direcciones del cliente'
 
     customers_id = fields.Many2one('order.customers', string='Cliente')
-    name = fields.Char('Lugar')
-    address = fields.Char('Dirección')
+    name = fields.Char('Lugar', required=True,)
+    address = fields.Char('Dirección', required=True,)
+
+    def name_get(self):
+        result = []
+        for rec in self:
+            name = '{} ({})'.format(rec.name, rec.address)
+            result.append((rec.id, name))
+        return result
