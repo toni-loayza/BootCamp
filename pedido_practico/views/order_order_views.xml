@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_order_tree" model="ir.ui.view">
+        <field name="name">order.order.tree</field>
+        <field name="model">order.order</field>
+        <field name="arch" type="xml">
+            <tree string="Lista de pedidos">
+                <field name="date"/>
+<!--                <field name="stock"/>-->
+<!--                <field name="price"/>-->
+            </tree>
+        </field>
+    </record>
+    <record id="view_order_order_form" model="ir.ui.view">
+        <field name="name">order.order.form</field>
+        <field name="model">order.order</field>
+        <field name="arch" type="xml">
+            <form string="Pedido">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date"/>
+<!--                            <field name="stock"/>-->
+                        </group>
+                        <group>
+<!--                            <field name="price"/>-->
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Detalle" id="order_line">
+                            <field name="line_ids">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_order_order" model="ir.actions.act_window">
+        <field name="name">Lista de pedidos</field>
+        <field name="res_model">order.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_order_order_tree"/>
+    </record>
+</odoo>

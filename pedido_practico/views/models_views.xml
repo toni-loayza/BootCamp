@@ -26,6 +26,16 @@
                             <field name="phone"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Direcciones" id="address_line">
+                            <field name="address_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="address"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
