@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <tree string="Lista de pedidos">
                 <field name="date"/>
-                <!--                <field name="stock"/>-->
+                <field name="state"/>
                 <!--                <field name="price"/>-->
             </tree>
         </field>
@@ -51,10 +51,25 @@
             </form>
         </field>
     </record>
-    <record id="action_order_order" model="ir.actions.act_window">
-        <field name="name">Lista de pedidos</field>
+    <record id="action_order_order_registered" model="ir.actions.act_window">
+        <field name="name">Registrados</field>
         <field name="res_model">order.order</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="view_order_order_tree"/>
+        <field name="domain">[('state', '=', 'registro')]</field>
+    </record>
+    <record id="action_order_order_preparation" model="ir.actions.act_window">
+        <field name="name">En preparación</field>
+        <field name="res_model">order.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_order_order_tree"/>
+        <field name="domain">[('state', '=', 'preparando')]</field>
+    </record>
+    <record id="action_order_order_finalized" model="ir.actions.act_window">
+        <field name="name">Finalizados</field>
+        <field name="res_model">order.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_order_order_tree"/>
+        <field name="domain">[('state', '=', 'finalizado')]</field>
     </record>
 </odoo>

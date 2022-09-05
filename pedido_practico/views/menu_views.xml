@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <menuitem id="menu_order" name="Pedidos" sequence="2">
-        <menuitem id="menu_order_order" name="Pedidos" sequence="1" action="action_order_order"/>
-        <menuitem id="menu_order_customers" name="Clientes" sequence="2" action="action_order_customers"/>
-        <menuitem id="menu_order_product" name="Productos" sequence="3" action="action_order_product"/>
+        <menuitem id="menu_order_order" name="Pedidos" sequence="1">
+            <menuitem id="menu_order_order_registered" name="Registrados" sequence="1" action="action_order_order_registered"/>
+            <menuitem id="menu_order_order_preparation" name="En preparación" sequence="2" action="action_order_order_preparation"/>
+            <menuitem id="menu_order_order_finalized" name="Finalizados" sequence="3" action="action_order_order_finalized"/>
+        </menuitem>
+        <menuitem id="menu_order_order_kitchen" name="Cosina" sequence="2">
+            <menuitem id="menu_order_order_preparation" name="En preparación" sequence="1" action="action_order_order_preparation"/>
+            <menuitem id="menu_order_order_finalized" name="Finalizados" sequence="2" action="action_order_order_finalized"/>
+        </menuitem>
+        <menuitem id="menu_order_customers" name="Clientes" sequence="3" action="action_order_customers"/>
+        <menuitem id="menu_order_product" name="Productos" sequence="4" action="action_order_product"/>
     </menuitem>
 </odoo>
