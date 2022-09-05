@@ -6,8 +6,8 @@
         <field name="arch" type="xml">
             <tree string="Lista de pedidos">
                 <field name="date"/>
-<!--                <field name="stock"/>-->
-<!--                <field name="price"/>-->
+                <!--                <field name="stock"/>-->
+                <!--                <field name="price"/>-->
             </tree>
         </field>
     </record>
@@ -17,6 +17,8 @@
         <field name="arch" type="xml">
             <form string="Pedido">
                 <header>
+                    <button name="action_setup" string="Preparar" type="object" states="registro"/>
+                    <button name="action_finalize" string="Finalizar" type="object" states="preparando"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
@@ -41,6 +43,10 @@
                             </field>
                         </page>
                     </notebook>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </sheet>
             </form>
         </field>

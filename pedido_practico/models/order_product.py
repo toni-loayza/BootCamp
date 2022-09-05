@@ -7,3 +7,4 @@ class OrderProduct(models.Model):
     name = fields.Char('Nombre del producto', required=True, size=100)
     stock = fields.Integer('Stock')
     price = fields.Float('Precio')
+    discount = fields.Float('Descuento %')
