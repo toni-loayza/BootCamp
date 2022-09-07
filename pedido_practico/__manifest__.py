@@ -8,6 +8,7 @@
         'mail'
     ],
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
         'views/models_views.xml',
         'views/order_order_views.xml',
