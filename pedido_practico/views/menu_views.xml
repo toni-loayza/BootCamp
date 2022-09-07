@@ -8,7 +8,7 @@
         </menuitem>
         <menuitem id="menu_order_order_kitchen" name="Cosina" sequence="2">
             <menuitem id="menu_order_order_kitchen_preparation" name="En preparación" sequence="1" action="action_order_order_kitchen_preparation"/>
-            <menuitem id="menu_order_order_kitchen_finalized" name="Finalizados" sequence="2" action="action_order_order_finalized"/>
+            <menuitem id="menu_order_order_kitchen_finalized" name="Finalizados" sequence="2" action="action_order_order_kitchen_finalized"/>
         </menuitem>
         <menuitem id="menu_order_customers" name="Clientes" sequence="3" action="action_order_customers"/>
         <menuitem id="menu_order_product" name="Productos" sequence="4" action="action_order_product"/>
