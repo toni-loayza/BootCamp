@@ -9,6 +9,8 @@ STATUS_OPTIONS = [
 class OrderOrder(models.Model):
     _name = 'order.order'
     _inherit = 'mail.thread'
+    _description = 'Pedido'
+    _rec_name = 'customers_id'
 
     line_ids = fields.One2many('order.order.line', 'order_id', string='Detalles')
     # hora estatica
@@ -40,6 +42,7 @@ class OrderOrder(models.Model):
 
 class OrderOrderLine(models.Model):
     _name = 'order.order.line'
+    _description = 'Detalle Pedido'
 
     order_id = fields.Many2one('order.order', string='Pedido', required=True)
     product_id = fields.Many2one('order.product', string='Producto', required=True, domain=[('stock', '>', 0)],)

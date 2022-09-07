@@ -6,8 +6,8 @@
         <field name="arch" type="xml">
             <tree string="Lista de pedidos">
                 <field name="date"/>
+                <field name="customers_id"/>
                 <field name="state"/>
-                <!--                <field name="price"/>-->
             </tree>
         </field>
     </record>
@@ -55,21 +55,89 @@
         <field name="name">Registrados</field>
         <field name="res_model">order.order</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_order_order_tree"/>
         <field name="domain">[('state', '=', 'registro')]</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('view_order_order_tree')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('view_order_order_form')})]"/>
     </record>
     <record id="action_order_order_preparation" model="ir.actions.act_window">
         <field name="name">En preparación</field>
         <field name="res_model">order.order</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_order_order_tree"/>
         <field name="domain">[('state', '=', 'preparando')]</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('view_order_order_tree')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('view_order_order_form')})]"/>
     </record>
     <record id="action_order_order_finalized" model="ir.actions.act_window">
         <field name="name">Finalizados</field>
         <field name="res_model">order.order</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_order_order_tree"/>
         <field name="domain">[('state', '=', 'finalizado')]</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('view_order_order_tree')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('view_order_order_form')})]"/>
+    </record>
+
+    <!--    vista para cosina-->
+    <record id="view_order_order_kitchen_tree" model="ir.ui.view">
+        <field name="name">order.order.kitchen.tree</field>
+        <field name="model">order.order</field>
+        <field name="arch" type="xml">
+            <tree string="Lista de pedidos" create="0" edit="0">
+                <field name="date"/>
+                <field name="write_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_order_order_kitchen_form" model="ir.ui.view">
+        <field name="name">order.order.kitchen.form</field>
+        <field name="model">order.order</field>
+        <field name="arch" type="xml">
+            <form string="Pedido" create="0" edit="0">
+                <header>
+                    <button name="action_finalize" string="Finalizar" type="object" states="preparando"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Detalles" id="order_line">
+                            <field name="line_ids">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_order_order_kitchen_preparation" model="ir.actions.act_window">
+        <field name="name">En preparación</field>
+        <field name="res_model">order.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('state', '=', 'preparando')]</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('view_order_order_kitchen_tree')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('view_order_order_kitchen_form')})]"/>
+    </record>
+    <record id="action_order_order_kitchen_finalized" model="ir.actions.act_window">
+        <field name="name">Finalizados</field>
+        <field name="res_model">order.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('state', '=', 'finalizado')]</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('view_order_order_kitchen_tree')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('view_order_order_kitchen_form')})]"/>
     </record>
 </odoo>
