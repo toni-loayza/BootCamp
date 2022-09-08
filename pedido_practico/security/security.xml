@@ -7,5 +7,26 @@
         <record model="res.groups" id="group_call_center">
             <field name="name">Call center</field>
         </record>
+
+        <record model="ir.rule" id="rule_edit_call_center">
+            <field name="name">Pedidos del usuario call center</field>
+            <field name="model_id" ref="model_order_order"/>
+            <field name="groups" eval="[(4, ref('group_call_center'))]"/>
+            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+        <record model="ir.rule" id="rule_other_call_center">
+            <field name="name">Pedidos de otros usuarios</field>
+            <field name="model_id" ref="model_order_order"/>
+            <field name="groups" eval="[(4, ref('group_call_center'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
     </data>
 </odoo>

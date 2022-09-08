@@ -34,7 +34,7 @@ class OrderOrder(models.Model):
     def action_setup(self):
         self.write({'state': 'preparando'})
         for line in self.line_ids:
-            line.product_id.stock = line.product_id.stock - line.quantity
+            line.product_id.sudo().write({'stock': line.product_id.stock - line.quantity})
 
     def action_finalize(self):
         self.write({'state': 'finalizado'})

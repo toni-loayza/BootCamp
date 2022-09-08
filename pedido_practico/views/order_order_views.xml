@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="view_order_order_search" model="ir.ui.view">
+        <field name="name">order.order.search</field>
+        <field name="model">order.order</field>
+        <field name="arch" type="xml">
+            <search string="Filtro">
+                <filter name="my_orders" string="Mis pedidos" domain="[('create_uid', '=', uid)]"/>
+            </search>
+        </field>
+    </record>
     <record id="view_order_order_tree" model="ir.ui.view">
         <field name="name">order.order.tree</field>
         <field name="model">order.order</field>
@@ -8,6 +17,7 @@
                 <field name="date"/>
                 <field name="customers_id"/>
                 <field name="state"/>
+                <field name="create_uid"/>
             </tree>
         </field>
     </record>
@@ -78,6 +88,7 @@
         <field name="res_model">order.order</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('state', '=', 'registro')]</field>
+        <field name="context">{'search_default_my_orders': True}</field>
         <field name="view_ids" eval="[(5, 0, 0),
         (0, 0, {'view_mode': 'tree', 'view_id': ref('view_order_order_tree')}),
         (0, 0, {'view_mode': 'form', 'view_id': ref('view_order_order_form')})]"/>
@@ -87,6 +98,7 @@
         <field name="res_model">order.order</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('state', '=', 'preparando')]</field>
+        <field name="context">{'search_default_my_orders': True}</field>
         <field name="view_ids" eval="[(5, 0, 0),
         (0, 0, {'view_mode': 'tree', 'view_id': ref('view_order_order_reading_tree')}),
         (0, 0, {'view_mode': 'form', 'view_id': ref('view_order_order_reading_form')})]"/>
@@ -96,6 +108,7 @@
         <field name="res_model">order.order</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('state', '=', 'finalizado')]</field>
+        <field name="context">{'search_default_my_orders': True}</field>
         <field name="view_ids" eval="[(5, 0, 0),
         (0, 0, {'view_mode': 'tree', 'view_id': ref('view_order_order_reading_tree')}),
         (0, 0, {'view_mode': 'form', 'view_id': ref('view_order_order_reading_form')})]"/>
