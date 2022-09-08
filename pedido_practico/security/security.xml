@@ -4,5 +4,8 @@
         <record model="res.groups" id="group_kitchen">
             <field name="name">Rol de cosina</field>
         </record>
+        <record model="res.groups" id="group_call_center">
+            <field name="name">Call center</field>
+        </record>
     </data>
 </odoo>
